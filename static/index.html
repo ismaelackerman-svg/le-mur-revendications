@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#ffffff">
+  <title>Le Mur · Revendications étudiantes</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <!-- En-tête fixe en haut -->
+  <header class="barre">
+    <div class="barre-contenu">
+      <a class="logo" href="/" aria-label="Le Mur, accueil">Le <span>Mur</span></a>
+      <button id="burger" class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav id="menu" class="menu" hidden aria-label="Menu">
+      <button type="button" id="m-popu" class="menu-item">Les plus soutenues</button>
+      <button type="button" id="m-recent" class="menu-item">Les plus récentes</button>
+      <button type="button" id="m-mes" class="menu-item">Mes propositions</button>
+      <button type="button" id="m-sortie" class="menu-item sortie" hidden>Se déconnecter</button>
+      <details class="aide">
+        <summary>Comment ça marche ?</summary>
+        <p>Propose une revendication avec le bouton orange, vote pour ou contre celles des autres.
+           Tu as un vote par revendication et tu peux changer d'avis. Les plus soutenues sont portées
+           en assemblée générale. Ton compte est anonyme.</p>
+      </details>
+    </nav>
+  </header>
+
+  <main>
+    <p id="message" role="status"></p>
+
+    <!-- Inscription (lien reçu par mail, valable une seule fois) ou connexion -->
+    <section id="auth" class="auth" hidden>
+      <h1 id="auth-titre"></h1>
+      <p id="auth-texte" class="auth-texte"></p>
+      <form id="auth-form" novalidate>
+        <label for="pseudo">Pseudo</label>
+        <input id="pseudo" name="pseudo" type="text" autocomplete="username" autocapitalize="none"
+               spellcheck="false" maxlength="24" required>
+        <label for="mdp">Mot de passe</label>
+        <input id="mdp" name="mdp" type="password" autocomplete="current-password" maxlength="200" required>
+        <div id="zone-confirmation" hidden>
+          <label for="mdp2">Confirme le mot de passe</label>
+          <input id="mdp2" name="mdp2" type="password" autocomplete="new-password" maxlength="200">
+        </div>
+        <p id="auth-erreur" class="erreur-dialogue" role="alert"></p>
+        <button id="auth-bouton" type="submit" class="principal"></button>
+      </form>
+      <p id="auth-aide" class="auth-aide"></p>
+    </section>
+
+    <div id="entete-liste" class="entete-liste" hidden>
+      <h1 id="titre-liste">Les plus soutenues</h1>
+      <span id="total" class="total"></span>
+    </div>
+
+    <ol id="liste" class="mur"></ol>
+  </main>
+
+  <!-- La croix orange, en bas à droite -->
+  <button id="fab" class="fab" type="button" aria-label="Proposer une revendication" title="Proposer une revendication" hidden>
+    <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true">
+      <path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/>
+    </svg>
+  </button>
+
+  <dialog id="dialogue" class="dialogue" aria-labelledby="dialogue-titre">
+    <div class="dialogue-tete">
+      <h2 id="dialogue-titre">Nouvelle revendication</h2>
+      <button id="fermer" type="button" class="fermer" aria-label="Fermer">×</button>
+    </div>
+    <textarea id="texte" rows="4" maxlength="400"
+      placeholder="Ex : Ouverture de la bibliothèque le dimanche en période d'examens"></textarea>
+    <div class="dialogue-pied">
+      <span id="compteur">0 / 400</span>
+      <span id="restantes"></span>
+    </div>
+    <p id="erreur-dialogue" class="erreur-dialogue" role="alert"></p>
+    <button id="envoyer" type="button" class="principal">Publier sur le mur</button>
+  </dialog>
+
+  <script src="/app.js"></script>
+</body>
+</html>

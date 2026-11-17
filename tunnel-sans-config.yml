@@ -1,0 +1,3 @@
+# Fichier volontairement vide.
+# Le tunnel du vote doit ignorer ~/.cloudflared/config.yml (celui de qwandra.com),
+# sinon la règle finale « http_status:404 » de ce fichier renvoie 404 à tout le monde.

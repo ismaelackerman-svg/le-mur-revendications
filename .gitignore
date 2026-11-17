@@ -1,0 +1,10 @@
+vote.db
+*.db
+sortie/
+essai/
+codes_*.txt
+echecs.txt
+__pycache__/
+sortie_8/
+sortie_*/
+tunnel*.log
